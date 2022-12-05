@@ -1,1 +1,1 @@
-web: gunicorn Django_railway.wsgi  --log-file
+web: gunicorn Django_railway.wsgi  --log-file -
