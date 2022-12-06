@@ -14,6 +14,11 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = "Новина"
+        verbose_name_plural = "Новини"
+        ordering = ['id']
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True, verbose_name="Категорії")
@@ -22,3 +27,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Категорія"
+        verbose_name_plural = "Категорії"
+        ordering = ['-name']
