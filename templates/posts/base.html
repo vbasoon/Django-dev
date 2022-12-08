@@ -14,9 +14,41 @@
 <body>
 {% include 'posts/includes/header.html' %}
 <div class="container d-flex">
-    {% block content %}
+    <aside class="p-4">
+        <h3><i class="fa-solid fa-house"></i>Категорії</h3>
+        <ul>
+            {% if category_selected == 0 %}
+                <li>All Categories</li>
+            {% else %}
+                <li><a href="{% url 'home' %}">All Categories</a></li>
+            {% endif %}
 
-    {% endblock %}
+            {% for category in categories %}
+                {% if category.pk == category_selected %}
+                    <li class="selected">{{category.name}}</li>
+                {% else %}
+                    <li><a href="{{ category.get_absolute_url }}">{{category.name}}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <a href="#" class="btn btn-info" role="button"><i class="fa-sharp fa-solid fa-circle-plus"></i> Add news</a>
+
+    </aside>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <aside class="p-4">
+        <div class="inform">
+            informer
+        </div>
+        <div class="adv">
+            advertising
+        </div>
+
+    </aside>
+
 </div>
 {% include 'posts/includes/footer.html' %}
 
